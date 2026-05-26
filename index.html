@@ -26,6 +26,15 @@
   <!-- Custom CSS -->
   <link href="css/stylish-portfolio.css" rel="stylesheet">
 
+  <style>
+    /* Only shift hero up on screens where the masthead becomes 100vh (>= 992px).
+       On mobile the masthead is just min-height: 30rem, so any large translateY
+       would push the title off the top of the viewport. */
+    @media (min-width: 992px) {
+      .hero-shift { transform: translateY(-21rem); }
+    }
+  </style>
+
     <!--  Mapbox -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
@@ -88,7 +97,7 @@
 
   <!-- Header -->
   <header class="masthead d-flex">
-    <div class="container text-left my-auto" style="transform: translateY(-21rem);">
+    <div class="container text-left my-auto hero-shift">
       <h1 class="mb-1" style = "color:white;">John Kremers</h1>
       <h3 class="mb-5" style = "color:white;">
         <em><u>Production Manager</u> | <u>Operations &amp; Manufacturing Leader</u></em><br>
