@@ -33,6 +33,69 @@
     @media (min-width: 992px) {
       .hero-shift { transform: translateY(-21rem); }
     }
+
+    /* Career History expandable cards */
+    .career-card {
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .career-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.1); border-color: #1D809F; }
+    .career-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.4rem 1.6rem;
+      cursor: pointer;
+      user-select: none;
+      color: inherit;
+      text-decoration: none;
+    }
+    .career-header:hover, .career-header:focus { color: inherit; text-decoration: none; }
+    .career-icon {
+      flex-shrink: 0;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #1D809F;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .career-meta { flex-grow: 1; min-width: 0; }
+    .career-meta h4 { margin: 0 0 0.15rem 0; font-weight: 700; }
+    .career-meta .company { margin: 0; color: #1D809F; font-weight: 600; }
+    .career-meta .dates { margin: 0; color: #868e96; font-size: 0.9rem; font-style: italic; }
+    .career-chevron {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid #1D809F;
+      color: #1D809F;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .career-header[aria-expanded="true"] .career-chevron { transform: rotate(180deg); background: #1D809F; color: #fff; }
+    .career-details {
+      padding: 0.25rem 1.6rem 1.6rem 5.5rem;
+      margin: 0;
+      list-style: none;
+    }
+    .career-details li { padding: 0.35rem 0; line-height: 1.55; position: relative; padding-left: 1.25rem; }
+    .career-details li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.85rem;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #1D809F;
+    }
+    @media (max-width: 576px) {
+      .career-header { gap: 0.9rem; padding: 1.1rem 1.1rem; }
+      .career-icon { width: 44px; height: 44px; font-size: 1.1rem; }
+      .career-details { padding: 0.25rem 1.1rem 1.25rem 1.1rem; }
+    }
   </style>
 
     <!--  Mapbox -->
@@ -211,63 +274,146 @@
       <div class="content-section-heading text-center">
         <h3 class="text-secondary mb-0">EXPERIENCE</h3>
         <h2 class="mb-5">Career History</h2>
+        <p class="text-muted mb-5">Click any role to expand the full responsibilities and accomplishments.</p>
       </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#contact">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">POWDER COATING PRODUCTION MANAGER</div>
-                <p class="mb-0"><strong>BTD Wood Powder Coating &mdash; Brainerd, MN</strong><br>Managed daily operations and led 10–12 employees across two shifts. Streamlined SOPs to boost output and safety, served on the safety committee to reduce OSHA risk, and expanded production by improving processes for heat-sensitive substrates.<br><em>Jul 2025 - Mar 2026</em></p>
-              </div>
+
+      <div class="mx-auto" style="max-width: 900px;">
+
+        <!-- Job 1: BTD Wood Powder Coating -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#job-btd" role="button" aria-expanded="false" aria-controls="job-btd">
+            <span class="career-icon"><i class="fas fa-spray-can"></i></span>
+            <div class="career-meta">
+              <h4>Powder Coating Production Manager</h4>
+              <p class="company">BTD Wood Powder Coating &mdash; Brainerd, MN</p>
+              <p class="dates">Jul 2025 &ndash; Mar 2026</p>
             </div>
-            <img class="img-fluid" src="img/portfolio-1.jpg" alt="">
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <div class="collapse" id="job-btd">
+            <ul class="career-details">
+              <li>Managed daily powder coating operations and led a team of 10–12 employees across two shifts</li>
+              <li>Oversaw inventory, purchasing, scheduling, and production output</li>
+              <li>Coordinated packaging and shipping of sensitive materials while maintaining product integrity</li>
+              <li>Directed preventative maintenance programs ensuring accurate documentation and adherence to SOPs, resulting in maximized equipment up-time</li>
+              <li>Streamlined SOPs to increase efficiency, boost output, and enhance workplace safety</li>
+              <li>Served on the company safety committee and implemented organization systems to reduce OSHA risk and improve compliance</li>
+              <li>Improved processes for coating heat-sensitive substrates, expanding production capabilities</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#contact">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">ASSISTANT PLANT MANAGER / SAFETY DIRECTOR</div>
-                <p class="mb-0"><strong>Vanterra Manufacturing (formerly SafeBasements) &mdash; Paynesville, MN</strong><br>Key stakeholder in implementing Prodsmart and NetSuite ERP systems. Managed vendor relations, procurement, and inventory control. Supported operational transition during private equity acquisition.<br><em>Aug 2023 - Jun 2025</em></p>
-              </div>
+
+        <!-- Job 2: Vanterra Manufacturing -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#job-vanterra" role="button" aria-expanded="false" aria-controls="job-vanterra">
+            <span class="career-icon"><i class="fas fa-shield-alt"></i></span>
+            <div class="career-meta">
+              <h4>Assistant Plant Manager / Safety Director</h4>
+              <p class="company">Vanterra Manufacturing (formerly SafeBasements) &mdash; Paynesville, MN</p>
+              <p class="dates">Aug 2023 &ndash; Jun 2025</p>
             </div>
-            <img class="img-fluid" src="img/portfolio-2.jpg" alt="">
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <div class="collapse" id="job-vanterra">
+            <ul class="career-details">
+              <li>Managed vendor relations, project management, inventory control, and procurement</li>
+              <li>Key stakeholder in the implementation of ERP systems (Prodsmart and NetSuite) to improve production planning, inventory accuracy, and financial reporting</li>
+              <li>Ensured data integrity across plant operations, supporting accounting processes and company growth</li>
+              <li>Played a key role during company acquisition by private equity, supporting operational transition and scalability</li>
+              <li>Drove process improvements in scheduling, production planning, safety, supply chain management, and risk reduction</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#contact">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">DEALER SUPPORT &amp; DEVELOPMENT / SALES</div>
-                <p class="mb-0"><strong>SafeBasements Manufacturing &mdash; Paynesville, MN</strong><br>Generated $3.3M in regional sales while serving as primary liaison for 39 independent installers across the eastern U.S. and Canada. Coached dealer business owners on operations, lead generation, and team management.<br><em>Mar 2022 - Aug 2023</em></p>
-              </div>
+
+        <!-- Job 3: SafeBasements Manufacturing -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#job-safebasements" role="button" aria-expanded="false" aria-controls="job-safebasements">
+            <span class="career-icon"><i class="fas fa-handshake"></i></span>
+            <div class="career-meta">
+              <h4>Dealer Support &amp; Development / Sales</h4>
+              <p class="company">SafeBasements Manufacturing &mdash; Paynesville, MN</p>
+              <p class="dates">Mar 2022 &ndash; Aug 2023</p>
             </div>
-            <img class="img-fluid" src="img/portfolio-3.jpg" alt="">
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <div class="collapse" id="job-safebasements">
+            <ul class="career-details">
+              <li>Trained for 6 months in the field on foundation repair and waterproofing, gaining hands-on experience across installation, sales, and operations</li>
+              <li>Served as primary liaison for a network of 39 independent installers across the eastern U.S. and Canada</li>
+              <li>Generated $3.3M in regional sales through relationship management and strategic support</li>
+              <li>Advised business owners on operations, lead generation, profitability, and team management to drive growth</li>
+              <li>Trained installers, sales teams, and warehouse managers on best practices, improving performance and operational consistency of independent dealers</li>
+              <li>Supported dealer success through coaching on sales strategy, crew management, and inventory control</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#contact">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">GENERAL MANAGER / FOUNDER</div>
-                <p class="mb-0"><strong>CC Powder Coating LLP &mdash; Granite Falls, MN</strong><br>Founded and managed a large-capacity powder coating business generating $390K in revenue. Completed full facility setup in under 2 months — sourcing, transporting, and installing major industrial equipment.<br><em>Apr 2019 - Mar 2022</em></p>
-              </div>
+
+        <!-- Job 4: CC Powder Coating LLP -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#job-cc" role="button" aria-expanded="false" aria-controls="job-cc">
+            <span class="career-icon"><i class="fas fa-rocket"></i></span>
+            <div class="career-meta">
+              <h4>General Manager / Founder</h4>
+              <p class="company">CC Powder Coating LLP &mdash; Granite Falls, MN</p>
+              <p class="dates">Apr 2019 &ndash; Mar 2022</p>
             </div>
-            <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <div class="collapse" id="job-cc">
+            <ul class="career-details">
+              <li>Founded and managed a large-capacity powder coating business generating $390K in revenue</li>
+              <li>Led and completed full facility setup in less than 2 months, including sourcing, transporting, and installing major industrial equipment</li>
+              <li>Managed all day-to-day operations including staffing, logistics, vendor relations, inventory, estimating, sales, and customer satisfaction</li>
+              <li>Created well-organized production workflows to maximize efficiency</li>
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#contact">
-            <div class="caption">
-              <div class="caption-content">
-                <div class="h2">GENERAL MANAGER</div>
-                <p class="mb-0"><strong>Granite Falls Coating Inc. &mdash; Granite Falls, MN</strong><br>Promoted from laborer/painter to General Manager within 2 years. Drove 40% revenue growth (2017–2019), led a team of 5–8 employees, and spearheaded expansion that launched a second powder coating operation.<br><em>Jan 2015 - Mar 2022</em></p>
-              </div>
+
+        <!-- Job 5: Granite Falls Coating -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#job-granitefalls" role="button" aria-expanded="false" aria-controls="job-granitefalls">
+            <span class="career-icon"><i class="fas fa-tools"></i></span>
+            <div class="career-meta">
+              <h4>General Manager</h4>
+              <p class="company">Granite Falls Coating Inc. &mdash; Granite Falls, MN</p>
+              <p class="dates">Jan 2015 &ndash; Mar 2022</p>
             </div>
-            <img class="img-fluid" src="img/portfolio-5.jpg" alt="">
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
           </a>
+          <div class="collapse" id="job-granitefalls">
+            <ul class="career-details">
+              <li>Promoted from laborer/painter to General Manager within 2 years</li>
+              <li>Drove 40% revenue growth (2017–2019) through improved operations and customer expansion</li>
+              <li>Led and developed a team of 5–8 employees, managing scheduling, production, and performance</li>
+              <li>Oversaw estimating, quoting, and budgeting to maintain profitability</li>
+              <li>Managed shipping, receiving, and logistics, including interstate deliveries</li>
+              <li>Developed preventative maintenance schedules for equipment to minimize downtime</li>
+              <li>Operated commercial vehicles up to 26,000 lbs and forklifts up to 7,000 lbs</li>
+              <li>Spearheaded expansion by initiating a partnership that launched a second powder coating operation</li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Education -->
+        <div class="career-card mb-4">
+          <a class="career-header collapsed" data-toggle="collapse" href="#edu-stcloud" role="button" aria-expanded="false" aria-controls="edu-stcloud">
+            <span class="career-icon"><i class="fas fa-graduation-cap"></i></span>
+            <div class="career-meta">
+              <h4>Education</h4>
+              <p class="company">St. Cloud Technical and Community College &mdash; St. Cloud, MN</p>
+              <p class="dates">Auto Body Collision Repair</p>
+            </div>
+            <span class="career-chevron"><i class="fas fa-chevron-down"></i></span>
+          </a>
+          <div class="collapse" id="edu-stcloud">
+            <ul class="career-details">
+              <li>General education in Business Management</li>
+              <li>1 year of Electrical Construction Courses</li>
+              <li>Completed coursework in General Business Management, then specialized in collision repair</li>
+            </ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
